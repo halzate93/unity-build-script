@@ -4,7 +4,6 @@
     "domain": "https://build-api-builders.cloud.unity3d.com/api/v1",
     "org_id": "ORGANIZATION_ID",
     "project_id": "PROJECT_ID",
-    "build_target_id": "_all",
     "clean": false,
     "delay": 0
   }

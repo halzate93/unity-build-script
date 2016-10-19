@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "A command line tool to trigger Unity Cloud Build jobs.",
   "main": "index.js",
-  "scripts": {
-
-  },
+  "scripts": {},
   "keywords": [
     "unity",
     "cloudbuild"
@@ -14,13 +12,13 @@
     "unity-build": "./index.js"
   },
   "author": "halzate93",
-  "repository" :
-  {
-    "type" : "git",
-    "url" : "https://github.com/halzate93/unity-build-script.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/halzate93/unity-build-script.git"
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "commander": "^2.9.0",
     "config": "^1.21.0",
     "superagent": "^2.3.0"
   }

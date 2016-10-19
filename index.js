@@ -3,29 +3,53 @@
 // load required modules
 var request = require ('superagent')
 var config = require ('config')
+var options = require ('commander')
+
+// parse command line arguments
+options
+  .version('0.0.1')
+  .option('-v, --verbose', 'Verbose the request process')
+  .option('-p, --project [project_id]', 'Set the project id that should be built')
+  .option('-o, --org [org_id]', 'Set the organization id that contains the project to build')
+  .option('-k, --key [api_key]', 'Set your api key to use as credentials to log into Cloud Build')
+  .option('-t, --target [target]', 'Set the build target, defaults to [_all] if missing', '_all')
+  .parse(process.argv);
+
+if (options.verbose)
+  console.log ("options: " + JSON.stringify (options))
 
 // load the configuration file
 var settings = config.get ('cloudbuild')
-// console.log ("settings: " + JSON.stringify (settings))
+if (options.verbose)
+  console.log ("settings: " + JSON.stringify (settings))
+
+// set parameters, command line options have priority over config file
+var domain = settings.domain
+var api_key = options.key || config.api_key
+var org_id = options.org || config.org_id
+var project_id = options.project || config.project_id
+var build_target = options.target
 
 // construct request url which identifies the resource to build
-var url = `${settings.domain}/orgs/${settings.org_id}/projects/`
-        + `${settings.project_id}/buildtargets/${settings.build_target_id}/builds`
-// console.log ("url: " + url)
+var url = `${domain}/orgs/${org_id}/projects/${project_id}/buildtargets/${build_target}/builds`
+if (options.verbose)
+  console.log ("url: " + url)
 
 // construct headers with authentication
 var headers = {
-  "Authorization": "Basic " + settings.api_key,
+  "Authorization": "Basic " + api_key,
   "Content-Type": "application/json",
 }
-// console.log ("headers: " + JSON.stringify (headers))
+if (options.verbose)
+  console.log ("headers: " + JSON.stringify (headers))
 
 // construct the request body with build parameters
 var body = {
   "clean": settings.clean,
   "delay": settings.delay
 }
-// console.log ("body: " + JSON.stringify (body))
+if (options.verbose)
+  console.log ("body: " + JSON.stringify (body))
 
 // make ajax request to the api
 request.post (url)
@@ -36,11 +60,13 @@ request.post (url)
     if (error)
     {
       console.log ("There was a problem with the request")
-      // console.log (JSON.stringify (error))
+      if (options.verbose)
+        console.log (JSON.stringify (error))
     }
     else
     {
       console.log ("Build has been started successfully")
-      // console.log (JSON.stringify (response))
+      if (options.verbose)
+        console.log (JSON.stringify (response))
     }
   })
