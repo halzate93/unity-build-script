@@ -1,7 +1,7 @@
 {
   "cloudbuild": {
     "api_key": "",
-    "domain": "https://build-api.cloud.unity3d.com",
+    "domain": "https://build-api-builders.cloud.unity3d.com/api/v1",
     "org_id": "",
     "project_id": "",
     "build_target_id": "_all",
