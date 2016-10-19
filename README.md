@@ -66,3 +66,5 @@ If something isn't working, you can run the script with the --verbose option. Wh
 ```
 $ unity-build -v
 ```
+## Automation
+You can use a program like *cron* or setup a task on a hosted machine to trigger your builds daily, weekly or at specific times. To see more on this take a look at this instruction on how to do it on [heroku](https://devcenter.heroku.com/articles/scheduler). 
