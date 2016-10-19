@@ -4,7 +4,7 @@
     "domain": "",
     "org_id": "",
     "project_id": "",
-    "build_target_id": "",
+    "build_target_id": "_all",
     "clean": false,
     "delay": 0
   }
