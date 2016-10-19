@@ -1,9 +1,9 @@
 {
   "cloudbuild": {
-    "api_key": "0f0ba7522f1c2415383a318d02fe0466",
+    "api_key": "",
     "domain": "https://build-api-builders.cloud.unity3d.com/api/v1",
-    "org_id": "MadBricks",
-    "project_id": "caebb279-0cca-4d5e-8d71-45b781cfeedb",
+    "org_id": "",
+    "project_id": "",
     "build_target_id": "_all",
     "clean": false,
     "delay": 0
