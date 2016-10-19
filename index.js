@@ -14,7 +14,10 @@ var url = `${settings.domain}/orgs/${settings.org_id}/projects/`
 console.log ("url: " + url)
 
 // construct headers with authentication
-var headers = {"Authorization": "Basic " + settings.api_key}
+var headers = {
+  "Authorization": "Basic " + settings.api_key,
+  "Content-Type": "application/json",
+}
 console.log ("headers: " + JSON.stringify (headers))
 
 // construct the request body with build parameters
@@ -30,8 +33,8 @@ request.post (url)
   .send (body) // set the body with parameters
   .end (function (error, response) // send request
   {
-    console.log (error)
-    console.log (response)
+    if (error)
+      console.log ("There was a problem with the request:\n${error}", error)
+    else
+      console.log ("Build has been started successfully:\n${response}", response)
   })
-
-console.log ("Finished")
