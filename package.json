@@ -1,6 +1,6 @@
 {
   "name": "unity-build",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A command line tool to trigger Unity Cloud Build jobs.",
   "main": "index.js",
   "scripts": {},
