@@ -1,0 +1,11 @@
+{
+  "cloudbuild": {
+    "api_key": "",
+    "domain": "",
+    "org_id": "",
+    "project_id": "",
+    "build_target_id": "",
+    "clean": false,
+    "delay": 0
+  }
+}

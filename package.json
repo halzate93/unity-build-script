@@ -1,0 +1,22 @@
+{
+  "name": "unity-build",
+  "version": "0.0.1",
+  "description": "A command line tool to trigger Unity Cloud Build jobs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "unity",
+    "cloudbuild"
+  ],
+  "bin": {
+    "snippet": "./index.js"
+  },
+  "author": "halzate93",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "config": "^1.21.0",
+    "superagent": "^2.3.0"
+  }
+}
