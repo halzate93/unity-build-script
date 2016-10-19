@@ -4,7 +4,7 @@
   "description": "A command line tool to trigger Unity Cloud Build jobs.",
   "main": "index.js",
   "scripts": {
-      "postinstall": "npm link"
+      
   },
   "keywords": [
     "unity",
