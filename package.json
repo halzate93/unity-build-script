@@ -1,9 +1,11 @@
 {
   "name": "unity-build",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A command line tool to trigger Unity Cloud Build jobs.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "postinstall": "mkdir -p $HOME/.unity_build && cp config/*.json $HOME/.unity_build/"
+  },
   "keywords": [
     "unity",
     "cloudbuild"
@@ -16,6 +18,7 @@
     "type": "git",
     "url": "https://github.com/halzate93/unity-build-script.git"
   },
+  "preferGlobal": true,
   "license": "Apache-2.0",
   "dependencies": {
     "commander": "^2.9.0",

@@ -1,10 +1,9 @@
 {
-  "cloudbuild": {
-    "api_key": "CLOUD_BUILD_API_KEY",
-    "domain": "https://build-api-builders.cloud.unity3d.com/api/v1",
-    "org_id": "ORGANIZATION_ID",
-    "project_id": "PROJECT_ID",
-    "clean": false,
-    "delay": 0
-  }
+  "api_key": "",
+  "domain": "https://build-api-builders.cloud.unity3d.com/api/v1",
+  "org_id": "",
+  "project_id": "",
+  "target": "_all",
+  "clean": false,
+  "delay": 0
 }

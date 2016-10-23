@@ -7,28 +7,28 @@ var options = require ('commander')
 
 // parse command line arguments
 options
-  .version('0.0.1')
+  .version('0.0.3')
   .option('-v, --verbose', 'Verbose the request process')
   .option('-p, --project [project_id]', 'Set the project id that should be built')
   .option('-o, --org [org_id]', 'Set the organization id that contains the project to build')
   .option('-k, --key [api_key]', 'Set your api key to use as credentials to log into Cloud Build')
-  .option('-t, --target [target]', 'Set the build target, defaults to [_all] if missing', '_all')
+  .option('-t, --target [target]', 'Set the build target, defaults to [_all] if missing')
   .parse(process.argv);
 
 if (options.verbose)
   console.log ("options: " + JSON.stringify (options))
 
-// load the configuration file
-var settings = config.get ('cloudbuild')
+// load the configuration files
+var settings = config.util.loadFileConfigs ('$HOME/.unity_build/')
 if (options.verbose)
   console.log ("settings: " + JSON.stringify (settings))
 
 // set parameters, command line options have priority over config file
 var domain = settings.domain
-var api_key = options.key || config.api_key
-var org_id = options.org || config.org_id
-var project_id = options.project || config.project_id
-var build_target = options.target
+var api_key = options.key || settings.api_key
+var org_id = options.org || settings.org_id
+var project_id = options.project || settings.project_id
+var build_target = options.target || settings.target || '_all'
 
 // construct request url which identifies the resource to build
 var url = `${domain}/orgs/${org_id}/projects/${project_id}/buildtargets/${build_target}/builds`
