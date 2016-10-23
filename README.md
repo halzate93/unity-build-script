@@ -2,8 +2,10 @@
 A simple command line tool that triggers builds in Unity Cloud Build using it's REST API located at
 https://build-api.cloud.unity3d.com
 
+[![NPM](https://nodei.co/npm/unity-build.png)](https://nodei.co/npm/unity-build/)
+
 ## Installation
-This script is built using [Node.js](https://nodejs.org) command line tools, so you need to have it installed.
+This script was built using [Node.js](https://nodejs.org) command line tools, so you need to have it installed.
 
 Then you can use **npm** to install the command line tool:
 ```
@@ -55,12 +57,27 @@ $ export PROJECT_ID=<your_project_id>
 ```
 If you want these to stay between sesions you should store them on the config file according to your platform specifics.
 
-**Command line arguments have priority over environment variables.**
-
 Then you can just run it like this:
 ```
 $ unity-build
 ```
+**Command line arguments have priority over environment variables.**
+
+Another option would be to modify the default configuration file:
+```
+$ cd $HOME/.unity_build/
+$ cat default.json 
+{
+  "api_key": "",
+  "domain": "https://build-api-builders.cloud.unity3d.com/api/v1",
+  "org_id": "",
+  "project_id": "",
+  "target": "_all",
+  "clean": false,
+  "delay": 0
+}
+```
+**Environment variables have priority over this configuration file**
 
 If something isn't working, you can run the script with the --verbose option. Which will print information related to the request.
 ```
