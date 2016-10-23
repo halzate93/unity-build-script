@@ -49,6 +49,7 @@ $ unity-build --help
     -t, --target [target]       Set the build target, defaults to [_all] if missing
 ```
 
+### Using environment variables
 A better option would be to store the parameters in environment variables:
 ```
 $ export CLOUD_BUILD_API_KEY=<your_api_key>
@@ -63,6 +64,7 @@ $ unity-build
 ```
 **Command line arguments have priority over environment variables.**
 
+### Using global config file
 Another option would be to modify the default configuration file:
 ```
 $ cd $HOME/.unity_build/
@@ -79,6 +81,7 @@ $ cat default.json
 ```
 **Environment variables have priority over this configuration file**
 
+### Run with verbose
 If something isn't working, you can run the script with the --verbose option. Which will print information related to the request.
 ```
 $ unity-build -v
