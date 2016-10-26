@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 
+// Change the config directory if not set
+var path = require ('path')
+if (!process.env.NODE_CONFIG_DIR)
+{
+  var config_dir = path.join (process.env.HOME, '.unity_build')
+  process.env.NODE_CONFIG_DIR = config_dir
+}
+
 // load required modules
 var request = require ('superagent')
 var config = require ('config')
@@ -18,20 +26,18 @@ options
 if (options.verbose)
   console.log ("options: " + JSON.stringify (options))
 
-// load the configuration files
-var settings = config.util.loadFileConfigs ('$HOME/.unity_build/')
 if (options.verbose)
-  console.log ("settings: " + JSON.stringify (settings))
+  console.log ("settings: " + JSON.stringify (config))
 
 // set parameters, command line options have priority over config file
-var domain = settings.domain
-var api_key = options.key || settings.api_key
-var org_id = options.org || settings.org_id
-var project_id = options.project || settings.project_id
-var build_target = options.target || settings.target || '_all'
+var domain = config.domain
+var api_key = options.key || config.api_key
+var org_id = options.org || config.org_id
+var project_id = options.project || config.project_id
+var build_target = options.target || config.target || '_all'
 
 // construct request url which identifies the resource to build
-var url = `${domain}/orgs/${org_id}/projects/${project_id}/buildtargets/${build_target}/builds`
+var url = '${domain}/orgs/${org_id}/projects/${project_id}/buildtargets/${build_target}/builds'
 if (options.verbose)
   console.log ("url: " + url)
 
@@ -45,8 +51,8 @@ if (options.verbose)
 
 // construct the request body with build parameters
 var body = {
-  "clean": settings.clean,
-  "delay": settings.delay
+  "clean": config.clean,
+  "delay": config.delay
 }
 if (options.verbose)
   console.log ("body: " + JSON.stringify (body))
