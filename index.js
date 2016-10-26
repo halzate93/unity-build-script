@@ -37,7 +37,7 @@ var project_id = options.project || config.project_id
 var build_target = options.target || config.target || '_all'
 
 // construct request url which identifies the resource to build
-var url = '${domain}/orgs/${org_id}/projects/${project_id}/buildtargets/${build_target}/builds'
+var url = `${domain}/orgs/${org_id}/projects/${project_id}/buildtargets/${build_target}/builds`
 if (options.verbose)
   console.log ("url: " + url)
 
