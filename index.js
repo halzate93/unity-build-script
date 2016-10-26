@@ -15,7 +15,7 @@ var options = require ('commander')
 
 // parse command line arguments
 options
-  .version('0.1.0')
+  .version('0.1.1')
   .option('-v, --verbose', 'Verbose the request process')
   .option('-p, --project [project_id]', 'Set the project id that should be built')
   .option('-o, --org [org_id]', 'Set the organization id that contains the project to build')
